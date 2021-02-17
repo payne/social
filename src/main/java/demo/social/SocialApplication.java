@@ -31,5 +31,13 @@ public class SocialApplication implements CommandLineRunner {
             p.setId(userService.create(p));
             System.out.println("Created person with id="+p.getId());
         });
+        // Bert is friends with everyone
+        bert.addFriendShip(ernie.getId());
+        bert.addFriendShip(bigBird.getId());
+        // Ernie is friends with only Bert
+        ernie.addFriendShip(bert.getId());
+
+        userService.update(bert.getId(),bert);
+        userService.update(ernie.getId(),ernie);
     }
 }
